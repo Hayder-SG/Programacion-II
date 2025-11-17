@@ -2,35 +2,38 @@ class Persona:
     def __init__(self, nombre, edad, pesoPersona):
         self.__nombre = nombre
         self.__edad = edad
-        self.__persoPersona = pesoPersona
-    def getPeso(self): 
+        self.__pesoPersona = pesoPersona
+
+    def getPeso(self):
         return self.__pesoPersona
-    
+
+    def getEdad(self):
+        return self.__edad
+
     def mostrar(self):
         print(self.__nombre, self.__edad, self.__pesoPersona)
-    
+
+
 class Cabina:
     def __init__(self, nroCabina):
         self.__nroCabina = nroCabina
         self.__personasAbordo = []
-    
-    def getNroCavina(self):
-        return self.getNroCavina
 
-    
+    def getNroCabina(self):
+        return self.__nroCabina
+
     def agregarPersona(self, persona):
-        peso = 0
-        for p in self.__personasAbordo:
-            peso += p.getPeso()
-        if len(self.__personasAbordo) <= 10 and peso + persona.getPeso() <= 850:
+        peso = sum(p.getPeso() for p in self.__personasAbordo)
+        if len(self.__personasAbordo) < 10 and peso + persona.getPeso() <= 850:
             self.__personasAbordo.append(persona)
         else:
             print("No se puede abordar la persona")
-        
+
     def mostrar(self):
-        print(self.__nroCabina)
+        print("Cabina:", self.__nroCabina)
         for p in self.__personasAbordo:
             p.mostrar()
+
     def cabinaTotal(self):
         total = 0
         for p in self.__personasAbordo:
@@ -39,67 +42,69 @@ class Cabina:
             else:
                 total += 3
         return total
-        
+
+
 class Linea:
-    def __init__(self, color, cantidadCabinas = 0):
+    def __init__(self, color):
         self.__color = color
         self.__filaPersonas = []
         self.__cabinas = []
-        self.__cantidadCabinas = cantidadCabinas
-        
+
     def getColor(self):
         return self.__color
-    def agregarPersona(self, p):
-        self.__cabinas.append(p)
-        self.__filaPersonas.pop(0)
-    
+
+    def agregarCabina(self, cab):
+        self.__cabinas.append(cab)
+
     def agregarPerFila(self, p):
         self.__filaPersonas.append(p)
-    
-    def agregarCabina(self, nroCab):
-        self.__cabinas.append(nroCab)
-    
-    def cantcabinas(self):
-        return len(self.__cabinas)
-    
+
+    def agregarPersona(self):
+        if not self.__filaPersonas or not self.__cabinas:
+            return
+        persona = self.__filaPersonas.pop(0)
+        self.__cabinas[0].agregarPersona(persona)
+
     def mostrar(self):
-        print(self.__color)
-        print(self.__cantidadCabinas)
+        print("\nLínea:", self.__color)
+        print("Personas en fila:")
         for p in self.__filaPersonas:
             p.mostrar()
+        print("Cabinas:")
         for c in self.__cabinas:
             c.mostrar()
-    
+
     def sumaLineas(self):
-        total = 0
-        for p in self.__filaPersonas:
-            total += p.cabinaTotal()
-        return total
-    
+        return sum(c.cabinaTotal() for c in self.__cabinas)
+
+
 class MiTeleferico:
     def __init__(self):
         self.__lineas = []
-        self.__cantidadIngresos = 0
-        
+
+    def agregarLinea(self, linea):
+        self.__lineas.append(linea)
+
     def mostrar(self):
         for l in self.__lineas:
             l.mostrar()
-            
+
     def agregarPersonaFila(self, p, linea):
-        for lin in self.__lineas:
-            lin.getLinea() 
+        for l in self.__lineas:
+            if l.getColor() == linea.getColor():
+                l.agregarPerFila(p)
+                return
 
     def ingreso_total(self):
-        total = 0
-        for l in self.__lineas:
-            total += l.sumaLineas()
-        print(total)
+        total = sum(l.sumaLineas() for l in self.__lineas)
+        print("Ingreso total:", total)
+
 
 p1 = Persona("juan", 18, 50.1)
 p2 = Persona("pepe", 16, 55.1)
 p3 = Persona("maria", 19, 60.1)
-p4 = Persona("carlos", 6, 26.1)        
-        
+p4 = Persona("carlos", 6, 26.1)
+
 c1 = Cabina(1)
 c2 = Cabina(2)
 c3 = Cabina(3)
@@ -108,6 +113,16 @@ l1 = Linea("rojo")
 l2 = Linea("amarillo")
 l3 = Linea("azul")
 
+l2.agregarCabina(c1)
+
 my = MiTeleferico()
+my.agregarLinea(l1)
+my.agregarLinea(l2)
+my.agregarLinea(l3)
 
 my.agregarPersonaFila(p1, l2)
+my.agregarPersonaFila(p2, l2)
+
+l2.agregarPersona()
+
+my.mostrar()
