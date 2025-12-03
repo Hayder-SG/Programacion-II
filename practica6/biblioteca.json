@@ -1,0 +1,155 @@
+[
+    {
+        "nombre": "umsa",
+        "libros": [
+            {
+                "titulo": "Cien años de soledad",
+                "isbn": "12",
+                "paginas": [
+                    {
+                        "numero": 1,
+                        "contenido": "y es esa la historia de miguel"
+                    }
+                ]
+            },
+            {
+                "titulo": "El principito",
+                "isbn": "13",
+                "paginas": []
+            },
+            {
+                "titulo": "Don Quijote",
+                "isbn": "14",
+                "paginas": []
+            },
+            {
+                "titulo": "La odisea",
+                "isbn": "15",
+                "paginas": []
+            },
+            {
+                "titulo": "Hamlet",
+                "isbn": "16",
+                "paginas": []
+            }
+        ],
+        "autores": [
+            {
+                "nombre": "Gabriel García Márquez",
+                "nacionalidad": "Colombiano"
+            },
+            {
+                "nombre": "Antoine de Saint-Exupéry",
+                "nacionalidad": "Francés"
+            },
+            {
+                "nombre": "Miguel de Cervantes",
+                "nacionalidad": "Español"
+            },
+            {
+                "nombre": "Homero",
+                "nacionalidad": "Griego"
+            },
+            {
+                "nombre": "William Shakespeare",
+                "nacionalidad": "Inglés"
+            }
+        ],
+        "estudiantes": [
+            {
+                "codigo": "12",
+                "nombre": "Yeider"
+            },
+            {
+                "codigo": "13",
+                "nombre": "Ana"
+            },
+            {
+                "codigo": "14",
+                "nombre": "Luis"
+            },
+            {
+                "codigo": "15",
+                "nombre": "Carla"
+            },
+            {
+                "codigo": "16",
+                "nombre": "Pedro"
+            }
+        ]
+    },
+    {
+        "nombre": "uab",
+        "libros": [
+            {
+                "titulo": "1984",
+                "isbn": "21",
+                "paginas": []
+            },
+            {
+                "titulo": "Fahrenheit 451",
+                "isbn": "22",
+                "paginas": []
+            },
+            {
+                "titulo": "El señor de los anillos",
+                "isbn": "23",
+                "paginas": []
+            },
+            {
+                "titulo": "Harry Potter",
+                "isbn": "24",
+                "paginas": []
+            },
+            {
+                "titulo": "Moby Dick",
+                "isbn": "25",
+                "paginas": []
+            }
+        ],
+        "autores": [
+            {
+                "nombre": "George Orwell",
+                "nacionalidad": "Británico"
+            },
+            {
+                "nombre": "Ray Bradbury",
+                "nacionalidad": "Estadounidense"
+            },
+            {
+                "nombre": "J.R.R. Tolkien",
+                "nacionalidad": "Británico"
+            },
+            {
+                "nombre": "J.K. Rowling",
+                "nacionalidad": "Británica"
+            },
+            {
+                "nombre": "Herman Melville",
+                "nacionalidad": "Estadounidense"
+            }
+        ],
+        "estudiantes": [
+            {
+                "codigo": "21",
+                "nombre": "Lucía"
+            },
+            {
+                "codigo": "22",
+                "nombre": "Mario"
+            },
+            {
+                "codigo": "23",
+                "nombre": "Sofía"
+            },
+            {
+                "codigo": "24",
+                "nombre": "Diego"
+            },
+            {
+                "codigo": "25",
+                "nombre": "Valeria"
+            }
+        ]
+    }
+]
